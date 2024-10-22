@@ -108,4 +108,7 @@ resource "aws_instance" "aws-create-ec2-instance-with-iam-role" {
   vpc_security_group_ids = [aws_security_group.aws-ec2-describe-security-groups.id]
   tags = local.systest_ec2_instance_tag
   depends_on = [aws_iam_instance_profile.test_profile]
+  metadata_options {
+    http_tokens = "required"
+  }
 }
